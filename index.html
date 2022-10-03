@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Document</title>
+  <link rel='stylesheet' href='/public/css/reset.css'>
+  <link rel='stylesheet' href='/public/css/style.css'>
+</head>
+<body>
+  <div class='wrapper'>
+    <header>
+      <div class='add-todo-container'>
+        <h1>Todo list</h1>
+        <form id='add-todo-form' autocomplete='off'>
+          <fieldset>
+            <input
+              type='text'
+              class='input-task'
+              name='input-task'
+              placeholder='Next task to do'
+              required
+              >
+            <button
+              type='submit'
+              data-type='add'
+              class='bi bi-plus-lg'
+              title='Add task'
+              >
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </header>
+    <main>
+      <section class='todo-list-container'>
+        <header>
+          <h2>Tasks</h2>
+          <label for='filters'>view</label>
+          <div class='select-container'>
+            <select id='filters' name='filters'>
+              <option value='all' selected>All</option>
+              <option value='done'>Completed</option>
+              <option value='todo'>Incomplete</option>
+            </select>
+          </div>
+        </header>
+        <ul class='todo-list'></ul>
+        <!-- TODO: Clear based on selected filter: Clear All ... , Clear Completed ... etc. -->
+        <div id='clear-all' class='button-container margin-left'>
+          <label>Clear All Tasks</label><button class='bi bi-x-lg'></button>
+        </div>
+      </section>
+    </main>
+  </div>
+<script src='/public/js/todo-list.js' type='module'></script>
+</body>
+</html>

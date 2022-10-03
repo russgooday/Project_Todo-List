@@ -1,0 +1,209 @@
+@import 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap';
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css');
+
+:root {
+  --wrap-bg: rgb(29, 31, 35);
+  --proceed: rgb(8, 242, 0);
+  --warning: rgb(242, 0, 93);
+  --input-boxes: rgb(17, 17, 17);
+  --primary-text: rgb(216, 216, 216);
+  --accent-primary: rgb(0, 133, 242);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  background-color: black;
+  margin: 0;
+  padding: 0 1.5rem;
+}
+
+.wrapper {
+  background-color: var(--wrap-bg);
+  color: #eee;
+  max-width: 800px;
+  min-width: 320px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+h1,
+h2 {
+  text-align: left;
+  font-weight: 300;
+  color: var(--primary-text);
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.margin-left {
+  margin-left: auto;
+}
+
+.select-container {
+  background-color:rgb(17, 18, 21);
+  border-radius: 3px;
+  padding-right: 5px;
+}
+
+select {
+  border: none;
+  color: var(--primary-text);
+  padding: 5px 10px;
+  font-size: .875rem;
+  line-height: 2rem;
+  background: 0 0;
+  cursor: pointer;
+
+  option {
+    color:rgb(17, 18, 21);
+    line-height: 2rem;
+  }
+}
+
+.todo-list-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  header {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    align-items: center;
+
+    h2 {
+      margin-right: auto;
+    }
+
+    label {
+      font-size: .9rem;
+      color: rgb(134 140 160);
+      text-transform: uppercase;
+    }
+  }
+
+  .todo-list {
+    width: 100%;
+    display: grid;
+    grid-row-gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+fieldset {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: var(--input-boxes);
+  padding: 10px 20px;
+  gap: 10px;
+  border-radius: 3px;
+}
+
+fieldset:has(.input-task:focus),
+li:has(.input-task:enabled) {
+  box-shadow: 0px 2px var(--accent-primary);
+}
+
+// disable checkbox if editing
+fieldset:has(.input-task:enabled) input.checkbox {
+  opacity: .2;
+  pointer-events: none;
+}
+
+.input-task {
+  width: 100%;
+  background: none;
+  color: var(--primary-text);
+}
+
+input.checkbox {
+  transform: scale(1.2);
+  margin-right: 6px;
+}
+
+input.checkbox:checked + .input-task {
+  text-decoration: line-through;
+}
+
+// disable editing when task is checked/done
+input.checkbox:checked ~ button.edit {
+  color: #444;
+  pointer-events: none;
+}
+
+/* --- Buttons and Icons --- */
+
+.bi {
+  font-size: clamp(18px, 12.00px + 1.25vw, 22px);
+
+  &.bi-pencil,
+  &.bi-pencil-fill {
+    color:var(--primary-text);
+  }
+
+  &.bi-plus-lg {
+    color:var(--proceed);
+  }
+
+  &.bi-x-lg {
+    color:var(--warning);
+  }
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  color: var(--primary-text);
+  background-color: var(--input-boxes);
+  border-radius: 5px;
+  padding: .5rem 1.25rem;
+
+  label {
+    margin-right: 1rem;
+  }
+}
+
+button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: var(--primary-text);
+  background-color: var(--input-boxes);
+  padding: .5rem 1rem;
+
+  &.bi {
+    place-content: center;
+    background: none;
+    padding: 5px;
+  }
+
+  &.bi:hover {
+    background-color: #222;
+  }
+
+  .bi {
+    margin-left: 10px;
+  }
+}
+
+/* --- only display clear all when there are tasks to remove --- */
+
+.todo-list:not(:has(li)) + #clear-all {
+  display: none;
+}
+
+
