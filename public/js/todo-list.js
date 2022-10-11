@@ -1,3 +1,4 @@
+// module imports
 import { render } from './views/task-template.js'
 import storage from './models/storage.js'
 
@@ -58,21 +59,18 @@ window.addEventListener('DOMContentLoaded', () => {
     },
 
     remove ({ target: button }) {
-      const listItem = button.closest('li')
-
-      tasks.remove(listItem.id)
+      tasks.remove(button.dataset.id)
     },
 
     edit ({ target: button }) {
-      const listItem = button.closest('li')
-      const input = listItem.querySelector('.input-task')
+      const input = button.parentElement.querySelector('.input-task')
       const disabled = input.toggleAttribute('disabled')
 
       toggleBetween(button, 'bi-pencil', 'bi-pencil-fill')
 
       if (disabled) {
         // save edit
-        tasks.edit(listItem.id, { task: input.value })
+        tasks.edit(button.dataset.id, { task: input.value })
       } else {
         // focus for editing
         input.focus()

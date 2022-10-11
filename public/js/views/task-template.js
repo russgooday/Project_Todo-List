@@ -1,17 +1,16 @@
 /**
  * Creates an htmlElement with eventListeners applied.
- * @param {String} id
- * @param {String} task
- * @param {Object} handlers e.g. { edit: fn (evt) remove: fn (evt)}
- * @returns htmlElement
+ * @param {Object} props e.g. { id, tasks, status }
+ * @param {Object} handlers e.g. { edit: fn (evt){} remove: fn (evt){} }
+ * @returns {HTMLElement} a list item with eventListeners attached
  */
-export const createTask = (props, handlers) => {
+const createTask = (props, handlers) => {
   // listItem is the roor element
   const listItem = document.createElement('li')
   listItem.id = props.id
 
   listItem.insertAdjacentHTML('afterbegin', `
-    <fieldset>
+    <fieldset class='input-group'>
       <input
         type='checkbox'
         class='checkbox'
@@ -24,8 +23,8 @@ export const createTask = (props, handlers) => {
         value='${props.task}'
         disabled
       >
-      <button class='edit bi bi-pencil'></button>
-      <button class='delete bi bi-x-lg'></button>
+      <button class='edit bi bi-pencil' data-id='${props.id}'></button>
+      <button class='delete bi bi-x-lg' data-id='${props.id}'></button>
     </fieldset>
   `)
 
@@ -40,8 +39,10 @@ export const createTask = (props, handlers) => {
 }
 
 export const render = (tasks, handlers) => {
+  const clearAll = document.querySelector('#clear-all')
   const todoList = document.querySelector('.todo-list')
   const create = (props) => createTask(props, handlers)
 
   todoList.replaceChildren(...tasks.map(create))
+  clearAll.classList.toggle('hide', !(tasks.length))
 }

@@ -48,6 +48,10 @@ h1 {
   margin-bottom: 1rem;
 }
 
+.hide {
+  display: none !important;
+}
+
 .margin-left {
   margin-left: auto;
 }
@@ -104,7 +108,7 @@ select option {
   margin-bottom: 1.5rem;
 }
 
-fieldset {
+.input-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -121,13 +125,13 @@ fieldset {
   border-radius: 3px;
 }
 
-fieldset:has(.input-task:focus),
+.input-group:has(.input-task:focus),
 li:has(.input-task:enabled) {
   -webkit-box-shadow: 0px 2px var(--accent-primary);
           box-shadow: 0px 2px var(--accent-primary);
 }
 
-fieldset:has(.input-task:enabled) input.checkbox {
+.input-group:has(.input-task:enabled) input.checkbox {
   opacity: 0.2;
   pointer-events: none;
 }
@@ -208,9 +212,4 @@ button.bi:hover {
 }
 button .bi {
   margin-left: 10px;
-}
-
-/* --- only display clear all when there are tasks to remove --- */
-.todo-list:not(:has(li)) + #clear-all {
-  display: none;
 }

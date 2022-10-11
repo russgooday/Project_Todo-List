@@ -45,6 +45,10 @@ h1 {
   margin-bottom: 1rem;
 }
 
+.hide {
+  display: none!important;
+}
+
 .margin-left {
   margin-left: auto;
 }
@@ -99,7 +103,7 @@ select {
   }
 }
 
-fieldset {
+.input-group {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,13 +114,13 @@ fieldset {
   border-radius: 3px;
 }
 
-fieldset:has(.input-task:focus),
+.input-group:has(.input-task:focus),
 li:has(.input-task:enabled) {
   box-shadow: 0px 2px var(--accent-primary);
 }
 
 // disable checkbox if editing
-fieldset:has(.input-task:enabled) input.checkbox {
+.input-group:has(.input-task:enabled) input.checkbox {
   opacity: .2;
   pointer-events: none;
 }
@@ -200,10 +204,6 @@ button {
   }
 }
 
-/* --- only display clear all when there are tasks to remove --- */
 
-.todo-list:not(:has(li)) + #clear-all {
-  display: none;
-}
 
 
